@@ -1,65 +1,513 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Leprechaun Turkey</title>
-   <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Chrisp - Disguise a Turkey</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: #eee5d4;
+        }
+
+        /* TITLE */
+        .main-title {
+            position: absolute;
+            top: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+
+            font-family: "Cinzel Decorative", Georgia, serif;
+            font-size: 5vmin;
+            font-weight: 900;
+            letter-spacing: 0.3vmin;
+            color: #8d682c;
+            text-shadow: 2px 2px #e4d2a5;
+            z-index: 20;
+        }
+
+        /* TURKEY CANVAS */
+        .cartoon {
+            --brown: #75472d;
+            --light-brown: #a87950;
+            --gold: #d4a83f;
+            --cream: #fff8e9;
+            --red: #a52c2c;
+
+            width: 80vmin;
+            height: 80vmin;
+
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cartoon div {
+            position: absolute;
+            box-sizing: border-box;
+        }
+
+        /* HALO */
+        .halo {
+            width: 29%;
+            height: 29%;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            border: 2vmin solid #d9aa38;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* ANGELIC TAIL FEATHERS */
+        .tail {
+            width: 10%;
+            height: 40%;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            transform-origin: 50% 100%;
+
+            background: #fffdf5;
+            border: 0.5vmin solid #bda477;
+            border-radius: 100% 100% 30% 30%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* FEATHER CENTER LINE */
+        .tail::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 85%;
+            left: 50%;
+            top: 8%;
+            background: #d8c6a3;
+        }
+
+        /* SMALL FEATHER MARKINGS */
+        .tail::after {
+            content: "";
+            position: absolute;
+            width: 35%;
+            height: 60%;
+            left: 32%;
+            top: 18%;
+            border-left: 2px solid #e4d5b9;
+            border-radius: 50%;
+        }
+
+        /* FEATHER FAN */
+        .tail:nth-child(2) {
+            transform: translate(-50%, 0) rotate(17deg);
+        }
+
+        .tail:nth-child(3) {
+            transform: translate(-50%, 0) rotate(34deg);
+        }
+
+        .tail:nth-child(4) {
+            transform: translate(-50%, 0) rotate(51deg);
+        }
+
+        .tail:nth-child(5) {
+            transform: translate(-50%, 0) rotate(68deg);
+        }
+
+        .tail:nth-child(6) {
+            transform: translate(-50%, 0) rotate(85deg);
+        }
+
+        .tail:nth-child(7) {
+            transform: translate(-50%, 0) rotate(102deg);
+        }
+
+        .tail:nth-child(8) {
+            transform: translate(-50%, 0) rotate(-17deg);
+        }
+
+        .tail:nth-child(9) {
+            transform: translate(-50%, 0) rotate(-34deg);
+        }
+
+        .tail:nth-child(10) {
+            transform: translate(-50%, 0) rotate(-51deg);
+        }
+
+        .tail:nth-child(11) {
+            transform: translate(-50%, 0) rotate(-68deg);
+        }
+
+        .tail:nth-child(12) {
+            transform: translate(-50%, 0) rotate(-85deg);
+        }
+
+        .tail:nth-child(13) {
+            transform: translate(-50%, 0) rotate(-102deg);
+        }
+
+        /* LEGS */
+        .leg {
+            width: 3%;
+            height: 16%;
+            top: 75%;
+            background: #d18b32;
+            border-radius: 40%;
+            z-index: 5;
+        }
+
+        .leg-one {
+            left: 42%;
+        }
+
+        .leg-two {
+            left: 55%;
+        }
+
+        /* FEET */
+        .leg::before,
+        .leg::after {
+            content: "";
+            position: absolute;
+            width: 220%;
+            height: 15%;
+            bottom: 0;
+            background: #d18b32;
+            border-radius: 50%;
+        }
+
+        .leg::before {
+            left: -120%;
+            transform: rotate(-25deg);
+        }
+
+        .leg::after {
+            left: 0;
+            transform: rotate(25deg);
+        }
+
+        /* ORIGINAL TURKEY BODY */
+        .body {
+            width: 43%;
+            height: 43%;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #75472d;
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        /* ORIGINAL-STYLE BROWN WINGS */
+        .wing {
+            width: 20%;
+            height: 30%;
+            top: 43%;
+
+            background: #975f3d;
+            border: 0.5vmin solid #75472d;
+            border-radius: 100% 0% 100% 5%;
+
+            z-index: 4;
+        }
+
+        .left-wing {
+            left: 19%;
+            transform: rotate(-10deg);
+        }
+
+        .right-wing {
+            right: 19%;
+            transform: scaleX(-1) rotate(-10deg);
+        }
+
+        /* CREAM ROBE */
+        .robe {
+            width: 43%;
+            height: 42%;
+            top: 43%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #fff8e9;
+            border: 0.7vmin solid #c9b58e;
+            border-radius: 45% 45% 25% 25%;
+
+            clip-path: polygon(
+                20% 0,
+                80% 0,
+                100% 100%,
+                0 100%
+            );
+
+            z-index: 6;
+        }
+
+        /* ROBE FOLDS */
+        .robe::before {
+            content: "";
+            position: absolute;
+            width: 3%;
+            height: 80%;
+            left: 35%;
+            top: 10%;
+            background: #e7d9bd;
+            transform: rotate(8deg);
+        }
+
+        .robe::after {
+            content: "";
+            position: absolute;
+            width: 3%;
+            height: 80%;
+            right: 35%;
+            top: 10%;
+            background: #e7d9bd;
+            transform: rotate(-8deg);
+        }
+
+        /* RED SASH */
+        .sash {
+            width: 12%;
+            height: 43%;
+            top: 43%;
+            left: 43%;
+
+            background: #a52c2c;
+            border: 0.4vmin solid #702020;
+            transform: rotate(-24deg);
+            z-index: 8;
+        }
+
+        .sash::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            bottom: -15%;
+            left: 0;
+            background: #7d2020;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        /* GOLD COLLAR */
+        .collar {
+            width: 25%;
+            height: 9%;
+            top: 42%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            border-bottom: 0.8vmin solid #d4a83f;
+            border-radius: 50%;
+            z-index: 9;
+        }
+
+        /* GOLD BUTTON */
+        .gold-detail {
+            width: 3%;
+            height: 3%;
+            top: 54%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #d4a83f;
+            border-radius: 50%;
+            z-index: 9;
+        }
+
+        /* HEAD */
+        .head {
+            width: 23%;
+            height: 21%;
+            top: 17%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #a87950;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* NECK */
+        .neck {
+            width: 13%;
+            height: 20%;
+            top: 32%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #a87950;
+            border-radius: 0 0 50% 50%;
+            z-index: 7;
+        }
+
+        /* HAIR ABOVE THE FACE */
+        .hair {
+            width: 27%;
+            height: 13%;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #50301e;
+            border-radius: 50% 50% 20% 20%;
+            z-index: 12;
+        }
+
+        .hair::before {
+            content: "";
+            position: absolute;
+            width: 35%;
+            height: 45%;
+            left: 5%;
+            top: 65%;
+            background: #50301e;
+            border-radius: 50%;
+            transform: rotate(-25deg);
+        }
+
+        .hair::after {
+            content: "";
+            position: absolute;
+            width: 35%;
+            height: 45%;
+            right: 5%;
+            top: 65%;
+            background: #50301e;
+            border-radius: 50%;
+            transform: rotate(25deg);
+        }
+
+        /* SMALL BEARD UNDER THE BEAK */
+        .beard {
+            width: 12%;
+            height: 8%;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: #50301e;
+            border-radius: 20% 20% 50% 50%;
+            clip-path: polygon(0 0, 100% 0, 85% 65%, 50% 100%, 15% 65%);
+            z-index: 11;
+        }
+
+        /* EYES */
+        .eye {
+            width: 2%;
+            height: 2%;
+            top: 25%;
+            left: 45%;
+
+            background: #21150e;
+            border-radius: 50%;
+            z-index: 13;
+            box-shadow: 5vmin 0 #21150e;
+        }
+
+        /* BEAK */
+        .beak {
+            width: 0;
+            height: 0;
+            top: 29%;
+            left: 50%;
+
+            border-left: 3vmin solid #e69b24;
+            border-top: 1.5vmin solid transparent;
+            border-bottom: 1.5vmin solid transparent;
+            z-index: 14;
+        }
+
+        /* RED SNOOD */
+        .red {
+            width: 2.5vmin;
+            height: 5vmin;
+            top: 29%;
+            left: 48%;
+
+            background: #bd2525;
+            border-radius: 100% 0 100% 100%;
+            z-index: 15;
+        }
+
+    </style>
 </head>
 
 <body>
 
-   <div class="cartoon">
+    <h1 class="main-title">Jesus Chrisp</h1>
 
-      <!-- Rainbow tail feathers -->
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
-      <div class="tail"></div>
+    <div class="cartoon">
 
-      <!-- Pot of gold -->
-      <div class="pot">
-         <div class="coin coin1"></div>
-         <div class="coin coin2"></div>
-         <div class="coin coin3"></div>
-      </div>
+        <!-- HALO -->
+        <div class="halo"></div>
 
-      <!-- Legs -->
-      <div class="leg"></div>
-      <div class="leg"></div>
+        <!-- 13 ANGELIC TAIL FEATHERS -->
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
+        <div class="tail"></div>
 
-      <!-- Body and wings -->
-      <div class="body"></div>
-      <div class="wing"></div>
-      <div class="wing"></div>
+        <!-- LEGS -->
+        <div class="leg leg-one"></div>
+        <div class="leg leg-two"></div>
 
-      <!-- Leprechaun hat -->
-      <div class="hat-top"></div>
-      <div class="hat-bottom"></div>
+        <!-- BODY -->
+        <div class="body"></div>
 
-      <!-- Head and orange beard -->
-      <div class="head">
-         <div class="beard"></div>
-         <div class="eye"></div>
-         <div class="beak"></div>
-         <div class="red"></div>
-      </div>
+        <!-- ORIGINAL WINGS -->
+        <div class="wing left-wing"></div>
+        <div class="wing right-wing"></div>
 
-      <!-- Shamrock decoration -->
-      <div class="shamrock">☘</div>
+        <!-- NECK -->
+        <div class="neck"></div>
 
-   </div>
+        <!-- ROBE AND CLOTHING -->
+        <div class="robe"></div>
+        <div class="sash"></div>
+        <div class="collar"></div>
+        <div class="gold-detail"></div>
+
+        <!-- HEAD -->
+        <div class="head">
+            <div class="eye"></div>
+            <div class="beak"></div>
+            <div class="red"></div>
+        </div>
+
+        <!-- HAIR AND BEARD -->
+        <div class="hair"></div>
+        <div class="beard"></div>
+
+    </div>
 
 </body>
 </html>
